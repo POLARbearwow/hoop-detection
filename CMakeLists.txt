@@ -13,15 +13,11 @@ include_directories(/opt/MVS/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(${OpenCV_INCLUDE_DIRS})
 
+file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
+
 
 # 添加所有源文件
-add_executable(hoop_detector
-    main.cpp
-    hik_camera.cpp
-    hoop_detector.cpp
-    camera_calibrator.cpp
-    image_saver.cpp
-)
+add_executable(hoop_detector ${SOURCE_FILES})
 
 # 链接OpenCV库和海康相机SDK
 target_link_libraries(hoop_detector 
@@ -32,6 +28,6 @@ target_link_libraries(hoop_detector
 
 # 包含头文件目录
 target_include_directories(hoop_detector PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     ${OpenCV_INCLUDE_DIRS}
 ) 

@@ -5,6 +5,7 @@
 #include "hoop_detector.hpp"
 #include "camera_calibrator.hpp"
 #include "image_saver.hpp"
+#include "video_recorder.hpp"
 #include "MvCameraControl.h"
 #include <unistd.h>
 
@@ -212,17 +213,19 @@
 
 void printUsage() {
     std::cout << "使用方法:\n"
-              << "1. 摄像头模式: ./hoop_detecor --camera\n"
-              << "2. 图片模式: ./hoop_detecor --image <图片路径>\n"
-              << "3. 标定模式: ./hoop_detecor --calibrate <棋盘格宽> <棋盘格高> <方格大小(mm)> <图片目录>\n"
-              << "4. 验证标定: ./hoop_detecor --verify <标定文件> <测试图片>\n"
-              << "5. 保存图片: ./hoop_detecor --save [保存目录]\n"
+              << "1. 摄像头模式: ./hoop_detector --camera\n"
+              << "2. 图片模式: ./hoop_detector --image <图片路径>\n"
+              << "3. 标定模式: ./hoop_detector --calibrate <棋盘格宽> <棋盘格高> <方格大小(mm)> <图片目录>\n"
+              << "4. 验证标定: ./hoop_detector --verify <标定文件> <测试图片>\n"
+              << "5. 保存图片: ./hoop_detector --save [保存目录]\n"
+              << "6. 录制视频: ./hoop_detector --record [保存目录]\n"
               << "\n示例:\n"
-              << "1. 摄像头模式: ./hoop_detecor --camera\n"
-              << "2. 图片模式: ./hoop_detecor --image test.jpg\n"
-              << "3. 标定模式: ./hoop_detecor --calibrate 9 6 20 ./chess_images/\n"
-              << "4. 验证标定: ./hoop_detecor --verify camera_params.yml test.jpg\n"
-              << "5. 保存图片: ./hoop_detecor --save ./captured_images" << std::endl;
+              << "1. 摄像头模式: ./hoop_detector --camera\n"
+              << "2. 图片模式: ./hoop_detector --image test.jpg\n"
+              << "3. 标定模式: ./hoop_detector --calibrate 9 6 20 ./chess_images/\n"
+              << "4. 验证标定: ./hoop_detector --verify camera_params.yml test.jpg\n"
+              << "5. 保存图片: ./hoop_detector --save ../captured_images"<< std::endl;
+
 }
 
 // 处理单张图片的函数
@@ -434,6 +437,14 @@ int main(int argc, char* argv[]) {
             ImageSaver saver(save_dir);
             if (!saver.run()) {
                 std::cerr << "[Main] 图片保存模式运行失败" << std::endl;
+                return -1;
+            }
+        }
+        else if (mode == "--record") {
+            std::string save_dir = (argc > 2) ? argv[2] : "saved_videos";
+            VideoRecorder recorder(save_dir);
+            if (!recorder.run()) {
+                std::cerr << "[Main] 视频录制模式运行失败" << std::endl;
                 return -1;
             }
         }
