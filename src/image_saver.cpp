@@ -58,6 +58,7 @@ bool ImageSaver::run() {
     }
 
     cv::namedWindow("Camera", cv::WINDOW_NORMAL);
+    cv::resizeWindow("Camera", 960, 540);
     std::cout << "\n=== 图片保存模式 ===" << std::endl;
     std::cout << "按's'保存图片" << std::endl;
     std::cout << "按'q'退出程序" << std::endl;

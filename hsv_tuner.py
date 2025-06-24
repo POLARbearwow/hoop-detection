@@ -243,7 +243,7 @@ class InteractiveColorSegmenter:
         plt.show()
 
 if __name__ == '__main__':
-    image_file = '/opt/MVS/bin/Temp/Data/Image_20250611164813887.bmp' # <--- 修改这里!!
+    image_file = '/home/wufy/github_respository/hoop_detection/build/saved_images/20250623_223915_628_0000.jpg' # <--- 修改这里!!
     brush_s = 7 
 
     try:

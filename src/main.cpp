@@ -349,7 +349,9 @@ int main(int argc, char* argv[]) {
 
             // 创建显示窗口
             cv::namedWindow("Camera", cv::WINDOW_NORMAL);
+            cv::resizeWindow("Camera", 960, 540);
             cv::namedWindow("Processing Steps", cv::WINDOW_NORMAL);
+            cv::resizeWindow("Processing Steps", 960, 540);
 
             std::cout << "\n=== 开始摄像头模式 ===" << std::endl;
             std::cout << "按'q'键退出程序" << std::endl;
@@ -383,7 +385,9 @@ int main(int argc, char* argv[]) {
 
             // 创建显示窗口
             cv::namedWindow("Image", cv::WINDOW_NORMAL);
+            cv::resizeWindow("Image", 960, 540);
             cv::namedWindow("Processing Steps", cv::WINDOW_NORMAL);
+            cv::resizeWindow("Processing Steps", 960, 540);
 
             std::cout << "\n=== 开始图片处理模式 ===" << std::endl;
             

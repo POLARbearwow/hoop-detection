@@ -36,6 +36,7 @@ bool CameraCalibrator::calibrateFromImages(const std::string& image_dir,
 
     // 创建窗口用于显示
     cv::namedWindow("Calibration", cv::WINDOW_NORMAL);
+    cv::resizeWindow("Calibration", 960, 540);
 
     // 处理每张图片
     for (size_t i = 0; i < image_files.size(); i++) {
@@ -157,7 +158,9 @@ bool CameraCalibrator::verifyCalibration(const std::string& calib_file,
 
     // 创建窗口
     cv::namedWindow("Original", cv::WINDOW_NORMAL);
+    cv::resizeWindow("Original", 960, 540);
     cv::namedWindow("Undistorted", cv::WINDOW_NORMAL);
+    cv::resizeWindow("Undistorted", 960, 540);
 
     // 执行畸变校正
     cv::Mat undistorted;

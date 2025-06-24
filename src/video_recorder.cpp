@@ -63,6 +63,7 @@ bool VideoRecorder::run() {
     cv::VideoWriter writer;
 
     cv::namedWindow("Record", cv::WINDOW_NORMAL);
+    cv::resizeWindow("Record", 960, 540);
     std::cout << "\n=== 视频录制模式 ===" << std::endl;
     std::cout << "按's'开始/停止录制" << std::endl;
     std::cout << "按'q'退出程序" << std::endl;
