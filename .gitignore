@@ -1,3 +1,19 @@
 /.vscode
 /build
 /build.zip
+
+# Ignore media files (images, videos)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.avi
+*.mp4
+*.mov
+
+# Ignore directories containing captured or calibration images
+captured_images/
+pictures/
+calibration/
+saved_images/
+saved_videos/
